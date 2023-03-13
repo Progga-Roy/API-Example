@@ -16,6 +16,7 @@ const displayCountries =(country)=>{
                <img src="${countries.flags.png}" alt="">
               <h3>Capital: ${countries.capital ? countries.capital[0] : 'No Capital'}</h3> 
               <p>Population : ${countries.population} </p>
+              <button onclick="displayCountriesDetails('${countries.cca2}')">Details</button>
               `
               divContainer.appendChild(div)
         });
@@ -23,4 +24,20 @@ const displayCountries =(country)=>{
 
 }
 
+const displayCountriesDetails =code=>{
+    const url =`https://restcountries.com/v3.1/alpha/${code}`
+fetch(url)
+.then(res=> res.json())
+.then(data => showCountriesDetails(data[0]))
+
+}
+ const showCountriesDetails = (country)=>{
+    console.log(country)
+const detailContainer = document.getElementById('country-detail')
+detailContainer.innerHTML = `
+<h3> Name: ${country.name.common}</h3>
+<img src="${country.flags.png}" alt="">
+`
+
+ }
 loadCountries()
