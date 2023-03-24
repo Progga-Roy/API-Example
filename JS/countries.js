@@ -32,7 +32,6 @@ fetch(url)
 
 }
  const showCountriesDetails = (country)=>{
-    console.log(country)
 const detailContainer = document.getElementById('country-detail')
 detailContainer.innerHTML = `
 <h3> Name: ${country.name.common}</h3>
